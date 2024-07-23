@@ -1,43 +1,31 @@
 from abc import ABC, abstractmethod
 
-class Book(ABC):
+# Define an interface or abstract base class
+class Toy(ABC):
     @abstractmethod
-    def get_title(self):
+    def create(self):
         pass
-    
 
-# Concrete
-class Novel(Book):
-    def get_title(self):
-        return "Novel"
+# Implement concrete classes for each type of object
+class Car(Toy):
+    def create(self):
+        return {"type": "car", "wheels": 4, "color": "red"}
 
-# Concrete   
-class Biography(Book):
-    def get_title(self):
-        return "Biography"
-    
-class Bookstore(ABC):
-    @abstractmethod
-    def create_book(self):
-        pass
-    
-    def order_book(self):
-        book = self.create_book()
-        return f"Ordered a {book.get_title()}."
-    
-class NovelStore(Bookstore):
-    def create_book(self):
-        return Novel()
-    
-class BiographyStore(Bookstore):
-    def create_book(self):
-        return Biography()
-    
-def purchase_book(store):
-    return store.order_book()
+class Doll(Toy):
+    def create(self):
+        return {"type": "doll", "hair_color": "blonde", "height": "12 inches"}
 
-novel_store = NovelStore()
-biography_store = BiographyStore()
+# Create a factory class
+class ToyFactory:
+    @staticmethod
+    def create_toy(toy_type):
+        if toy_type == "car":
+            return Car().create()
+        elif toy_type == "doll":
+            return Doll().create()
+        else:
+            return None
 
-print(purchase_book(novel_store))
-print(purchase_book(biography_store))
+# Usage
+toy = ToyFactory.create_toy("car")
+print(toy)  # Output: {'type': 'car', 'wheels': 4, 'color': 'red'}
