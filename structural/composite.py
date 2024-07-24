@@ -4,7 +4,7 @@ class SingleItemOrder:
     
 class CompositeOrder:
     def __init__(self):
-        self.orders = []
+        self._orders = []
         
     def add_order(self, order):
         self._orders.append(order)

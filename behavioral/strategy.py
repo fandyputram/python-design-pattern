@@ -43,15 +43,3 @@ payment_context.make_payment(50)
 
 payment_context.set_strategy(bank_transfer_strategy)
 payment_context.make_payment(75)
-
-payment_context.make_payment(75)
-
-payment_context.make_payment(75)
-
-payment_context.make_payment(75)
-
-payment_context.make_payment(75)
-
-payment_context.make_payment(75)
-
-payment_context.make_payment(75)
